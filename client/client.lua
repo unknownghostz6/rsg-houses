@@ -152,7 +152,7 @@ end)
 -- house door prompts
 Citizen.CreateThread(function()
     for houses, v in pairs(Config.HouseDoors) do
-        exports['rsg-core']:createPrompt(v.prompt, v.doorcoords, RSGCore.Shared.Keybinds['U'], 'Unlock ' .. v.name, {
+        exports['rsg-core']:createPrompt(v.doorid, v.doorcoords, RSGCore.Shared.Keybinds['U'], 'Unlock ' .. v.name, {
             type = 'client',
             event = 'rsg-houses:client:toggledoor',
             args = { v.doorid, v.houseid },
