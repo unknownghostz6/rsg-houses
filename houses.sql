@@ -53,10 +53,7 @@ INSERT INTO `player_houses` (`id`, `agent`, `houseid`, `citizenid`, `owned`, `pr
 (42, 'ambarino', 'house42', '0', 0, 5000),
 (43, 'newaustin', 'house43', '0', 0, 5000),
 (44, 'newhanover', 'house44', '0', 0, 5000),
-(45, 'lemoyne', 'house45', '0', 0, 5000),
-(46, 'lemoyne', 'house46', '0', 0, 5000),
-(47, 'lemoyne', 'house47', '0', 0, 5000),
-(48, 'lemoyne', 'house48', '0', 0, 5000);
+(45, 'lemoyne', 'house45', '0', 0, 5000);
 
 CREATE TABLE IF NOT EXISTS `player_housekeys` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

@@ -249,6 +249,16 @@ RegisterNetEvent('rsg-houses:client:housemenu', function(houseid)
                         }
                     },
                     {
+                        header = 'Outfits',
+                        txt = '',
+                        icon = 'fas fa-hat-cowboy-side',
+                        params = {
+                            event = 'rsg-clothes:OpenOutfits',
+                            isServer = false,
+                            args = {},
+                        }
+                    },
+                    {
                         header = 'Close Menu',
                         txt = '',
                         params = {
@@ -257,11 +267,13 @@ RegisterNetEvent('rsg-houses:client:housemenu', function(houseid)
                     },
                 })
             else
-                print('no access')
+                RSGCore.Functions.Notify('You don\'t have access!', 'error')
             end
         end
     end)
 end)
+
+--------------------------------------------------------------------------------------------------
 
 -- house storage
 RegisterNetEvent('rsg-houses:client:storage', function(data)
