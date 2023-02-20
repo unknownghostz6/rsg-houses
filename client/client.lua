@@ -259,6 +259,16 @@ RegisterNetEvent('rsg-houses:client:housemenu', function(houseid)
                         }
                     },
                     {
+                        header = 'Land Tax',
+                        txt = '',
+                        icon = 'fas fa-dollar-sign',
+                        params = {
+                            event = 'rsg-houses:client:creditmenu',
+                            isServer = false,
+                            args = { house = houseid },
+                        }
+                    },
+                    {
                         header = 'Close Menu',
                         txt = '',
                         params = {
@@ -271,6 +281,77 @@ RegisterNetEvent('rsg-houses:client:housemenu', function(houseid)
             end
         end
     end)
+end)
+
+--------------------------------------------------------------------------------------------------
+
+-- credit menu
+RegisterNetEvent('rsg-houses:client:creditmenu', function(data)
+    RSGCore.Functions.TriggerCallback('rsg-houses:server:GetOwnedHouseInfo', function(result)
+        local housecitizenid = result[1].citizenid
+        local playercitizenid = RSGCore.Functions.GetPlayerData().citizenid
+        if housecitizenid ~= playercitizenid then
+            RSGCore.Functions.Notify('You don\'t own this house!', 'error')
+            return
+        end
+        if housecitizenid == playercitizenid then
+            exports['rsg-menu']:openMenu({
+                {
+                    header = 'Land Tax Credit',
+                    isMenuHeader = true,
+                    txt = 'current credit $'..result[1].credit,
+                    icon = "fas fa-home",
+                },
+                {
+                    header = 'Add Credit',
+                    txt = '',
+                    icon = 'fas fa-dollar-sign',
+                    params = {
+                        event = 'rsg-houses:client:addcredit',
+                        isServer = false,
+                        args = { 
+                            houseid = result[1].houseid, 
+                            credit = result[1].credit,
+                        },
+                    }
+                },
+                {
+                    header = 'Close Menu',
+                    txt = '',
+                    params = {
+                        event = 'rsg-menu:closeMenu',
+                    }
+                },
+            })
+        end
+    end)
+end)
+
+-- credit form
+RegisterNetEvent('rsg-houses:client:addcredit', function(data)
+    local dialog = exports['rsg-input']:ShowInput({
+        header = 'Add Land Tax Credit',
+        submitText = "Add Credit",
+        inputs = {
+            {
+                text = 'Amount',
+                name = "addcredit",
+                type = "number",
+                isRequired = true,
+                default = 50,
+            },
+        }
+    })
+    if dialog ~= nil then
+        for k,v in pairs(dialog) do
+            if Config.Debug == true then
+                print(dialog.addcredit)
+                print(data.houseid)
+            end
+            local newcredit = (data.credit + dialog.addcredit)
+            TriggerServerEvent('rsg-houses:server:addcredit', newcredit, dialog.addcredit, data.houseid)
+        end
+    end
 end)
 
 --------------------------------------------------------------------------------------------------
