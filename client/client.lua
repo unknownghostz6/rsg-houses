@@ -160,6 +160,33 @@ Citizen.CreateThread(function()
     end
 end)
 
+-- house door lock / unlock animation
+local function unlockAnimation()
+    local dict = "script_common@jail_cell@unlock@key"
+    
+    if not HasAnimDictLoaded(dict) then
+        RequestAnimDict(dict)
+        while not HasAnimDictLoaded(dict) do
+            Citizen.Wait(10)
+        end
+    end
+
+    local ped = PlayerPedId()
+
+    local prop = CreateObject("P_KEY02X", GetEntityCoords(ped) + vec3(0, 0, 0.2), true, true, true)
+    local boneIndex = GetEntityBoneIndexByName(ped, "SKEL_R_Finger12")
+
+    TaskPlayAnim(ped, "script_common@jail_cell@unlock@key", "action", 8.0, -8.0, 2500, 31, 0, true, 0, false, 0, false)
+    Wait(750)
+    AttachEntityToEntity(prop, ped, boneIndex, 0.02, 0.0120, -0.00850, 0.024, -160.0, 200.0, true, true, false, true, 1, true)
+
+    while IsEntityPlayingAnim(ped, "script_common@jail_cell@unlock@key", "action", 3) do
+        Wait(100)
+    end
+
+    DeleteObject(prop)
+end
+
 -- lock / unlock door
 RegisterNetEvent('rsg-houses:client:toggledoor', function(door, house)
     RSGCore.Functions.TriggerCallback('rsg-houses:server:GetHouseKeys', function(results)
@@ -167,14 +194,15 @@ RegisterNetEvent('rsg-houses:client:toggledoor', function(door, house)
             local playercitizenid = RSGCore.Functions.GetPlayerData().citizenid
             local resultcitizenid = v.citizenid
             local resulthouseid = v.houseid
-            print(resulthouseid)
             if resultcitizenid == playercitizenid and resulthouseid == house then
                 local doorstate = DoorSystemGetDoorState(door)
                 if doorstate == 1 then
+                    unlockAnimation()
                     DoorSystemSetDoorState(door, 0)
                     RSGCore.Functions.Notify('unlocked', 'primary')
                 end
                 if doorstate == 0 then
+                    unlockAnimation()
                     DoorSystemSetDoorState(door, 1)
                     RSGCore.Functions.Notify('locked', 'primary')
                 end
