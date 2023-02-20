@@ -5,7 +5,10 @@ Config.Debug = true
 -- settings
 Config.LandTax = 50
 Config.SellBack = 0.8 -- example: 0.5 = 50% of the buy price / 0.8 = 80% of the buy price
+Config.StorageMaxWeight = 4000000
+Config.StorageMaxSlots = 50
 
+-- blip settings
 Config.Blip = {
     blipName = 'Estate Agent', -- Config.Blip.blipName
     blipSprite = 'blip_robbery_home', -- Config.Blip.blipSprite
@@ -51,249 +54,395 @@ Config.EstateAgents = {
     },
 }
 
+-- house config
 Config.Houses = {
     {    -- house1
-        name = 'House1', 
+        name = 'House1',
+        houseid = 'house1',
+        houseprompt = 'houseprompt1',
+        menucoords = vector3(220.0229, 984.58837, 190.89463),
         blipcoords = vector3(215.80004882813, 988.06512451172, 189.9015045166),
         showblip = true
     },
     {    -- house2
-        name = 'House2', 
+        name = 'House2',
+        houseid = 'house2',
+        houseprompt = 'houseprompt2',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(-615.93969726563, -27.086599349976, 84.997604370117),
         showblip = true
     },
     {    -- house3
-        name = 'House3', 
+        name = 'House3',
+        houseid = 'house3',
+        houseprompt = 'houseprompt3',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(1888.1700439453,297.95916748047,76.076202392578),
         showblip = true
     },
     {    -- house4
-        name = 'House4', 
+        name = 'House4',
+        houseid = 'house4',
+        houseprompt = 'houseprompt4',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(1781.1064453125,-89.115615844727,55.815963745117),
         showblip = true
     },
     {    -- house5
-        name = 'House5', 
+        name = 'House5',
+        houseid = 'house5',
+        houseprompt = 'houseprompt5',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(1264.1951904297,-404.07095336914,96.595031738281),
         showblip = true
     },
     {    -- house6
-        name = 'House6', 
+        name = 'House6',
+        houseid = 'house6',
+        houseprompt = 'houseprompt6',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(1627.2501220703,-366.25610351563,74.909873962402),
         showblip = true
     },
     {    -- house7
-        name = 'House7', 
+        name = 'House7',
+        houseid = 'house17',
+        houseprompt = 'houseprompt7',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(-2368.841796875,-2390.40625,61.520217895508),
         showblip = true
     },
     {    -- house8
-        name = 'House8', 
+        name = 'House8',
+        houseid = 'house8',
+        houseprompt = 'houseprompt8',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(1114.0626220703,493.74633789063,96.290939331055),
         showblip = true
     },
     {    -- house9
-        name = 'House9', 
+        name = 'House9',
+        houseid = 'house9',
+        houseprompt = 'houseprompt9',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(-64.242599487305,-393.56112670898,71.248695373535),
         showblip = true
     },
     {    -- house10
-        name = 'House10', 
+        name = 'House10',
+        houseid = 'house10',
+        houseprompt = 'houseprompt10',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(338.25341796875,-669.94842529297,41.821144104004),
         showblip = true
     },
     {    -- house11
-        name = 'House11', 
+        name = 'House11',
+        houseid = 'house11',
+        houseprompt = 'houseprompt11',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(1111.4659423828,-1297.5782470703,65.41828918457),
         showblip = true
     },
     {    -- house12
-        name = 'House12', 
+        name = 'House12',
+        houseid = 'house12',
+        houseprompt = 'houseprompt12',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(1365.4197998047,-872.88018798828,69.162147521973),
         showblip = true
     },
     {    -- house13
-        name = 'House13', 
+        name = 'House13',
+        houseid = 'house13',
+        houseprompt = 'houseprompt13',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(2068.3598632813,-847.32141113281,42.350879669189),
         showblip = true
     },
     {    -- house14
-        name = 'House14', 
+        name = 'House14',
+        houseid = 'house14',
+        houseprompt = 'houseprompt14',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(2253.8466796875,-797.30505371094,43.133113861084),
         showblip = true
     },
     {    -- house15
-        name = 'House15', 
+        name = 'House15',
+        houseid = 'house15',
+        houseprompt = 'houseprompt15',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(2370.9301757813,-857.48553466797,42.043087005615),
         showblip = true
     },
     {    -- house16
-        name = 'House16', 
+        name = 'House16',
+        houseid = 'house16',
+        houseprompt = 'houseprompt16',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(1709.3989257813,-1003.7617797852,42.480758666992),
         showblip = true
     },
     {    -- house17
-        name = 'House17', 
+        name = 'House17',
+        houseid = 'house17',
+        houseprompt = 'houseprompt17',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(2628.2214355469,1694.3289794922,114.66619110107),
         showblip = true
     },
     {    -- house18
-        name = 'House18', 
+        name = 'House18',
+        houseid = 'house18',
+        houseprompt = 'houseprompt18',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(2993.4243164063,2188.4375,165.73570251465),
         showblip = true
     },
     {    -- house19
-        name = 'House19', 
+        name = 'House19',
+        houseid = 'house19',
+        houseprompt = 'houseprompt19',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(2473.8527832031,1996.4063720703,167.22595214844),
         showblip = true
     },
     {    -- house20
-        name = 'House20', 
+        name = 'House20',
+        houseid = 'house20',
+        houseprompt = 'houseprompt20',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(-422.6643371582,1733.5697021484,215.59002685547),
         showblip = true
     },
     {    -- house21
-        name = 'House21', 
+        name = 'House21',
+        houseid = 'house21',
+        houseprompt = 'houseprompt21',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(900.34381103516,265.21841430664,115.04807281494),
         showblip = true
     },
     {    -- house22
-        name = 'House22', 
+        name = 'House22',
+        houseid = 'house22',
+        houseprompt = 'houseprompt22',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(-1347.9483642578,2435.2036132813,307.49612426758),
         showblip = true
     },
     {    -- house23
-        name = 'House23', 
+        name = 'House23',
+        houseid = 'house23',
+        houseprompt = 'houseprompt23',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(-556.41680908203,2698.8635253906,319.38018798828),
         showblip = true
     },
     {    -- house24
-        name = 'House24', 
+        name = 'House24',
+        houseid = 'house24',
+        houseprompt = 'houseprompt24',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(-1019.1105957031,1688.2989501953,243.27978515625),
         showblip = true
     },
     {    -- house25
-        name = 'House25', 
+        name = 'House25',
+        houseid = 'house25',
+        houseprompt = 'houseprompt25',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(-1815.1489257813,654.96380615234,130.88250732422),
         showblip = true
     },
     {    -- house26
-        name = 'House26', 
+        name = 'House26',
+        houseid = 'house26',
+        houseprompt = 'houseprompt26',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(-2182.5109863281,716.46356201172,121.62875366211),
         showblip = true
     },
     {    -- house27
-        name = 'House27', 
+        name = 'House27',
+        houseid = 'house27',
+        houseprompt = 'houseprompt27',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(-2575.826171875,-1379.3582763672,148.27227783203),
         showblip = true
     },
     {    -- house28
-        name = 'House28', 
+        name = 'House28',
+        houseid = 'house28',
+        houseprompt = 'houseprompt28',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(-2374.3642578125,-1592.6021728516,153.29959106445),
         showblip = true
     },
     {    -- house29
-        name = 'House29', 
+        name = 'House29',
+        houseid = 'house29',
+        houseprompt = 'houseprompt29',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(-1410.5717773438,-2674.2229003906,41.185203552246),
         showblip = true
     },
     {    -- house30
-        name = 'House30', 
+        name = 'House30',
+        houseid = 'house30',
+        houseprompt = 'houseprompt30',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(-3958.3901367188,-2129.3940429688,-5.235463142395),
         showblip = true
     },
     {    -- house31
-        name = 'House31', 
+        name = 'House31',
+        houseid = 'house31',
+        houseprompt = 'houseprompt31',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(-4366.0122070313,-2416.3056640625,19.423376083374),
         showblip = true
     },
     {    -- house32
-        name = 'House32', 
+        name = 'House32',
+        houseid = 'house32',
+        houseprompt = 'houseprompt32',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(-5552.146484375,-2401.5205078125,-9.7140893936157),
         showblip = true
     },
     {    -- house33
-        name = 'House33', 
+        name = 'House33',
+        houseid = 'house33',
+        houseprompt = 'houseprompt33',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(-3552.3842773438,-3012.0998535156,10.820337295532),
         showblip = true
     },
     {    -- house34
-        name = 'House34', 
+        name = 'House34',
+        houseid = 'house34',
+        houseprompt = 'houseprompt34',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(-1959.1854248047,2160.2043457031,326.55380249023),
         showblip = true
     },
     {    -- house35
-        name = 'House35', 
+        name = 'House35',
+        houseid = 'house35',
+        houseprompt = 'houseprompt35',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(-1494.4030761719,1246.7662353516,313.5432434082),
         showblip = true
     },
     {    -- house36
-        name = 'House36', 
+        name = 'House36',
+        houseid = 'house36',
+        houseprompt = 'houseprompt36',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(3024.1213378906,1777.0731201172,83.169136047363),
         showblip = true
     },
     {    -- house37
-        name = 'House37', 
+        name = 'House37',
+        houseid = 'house37',
+        houseprompt = 'houseprompt37',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(1981.9653320313,1195.0833740234,170.41778564453),
         showblip = true
     },
     {    -- house38
-        name = 'House38', 
+        name = 'House38',
+        houseid = 'house38',
+        houseprompt = 'houseprompt38',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(2716.8154296875,708.16693115234,78.605178833008),
         showblip = true
     },
     {    -- house39
-        name = 'House39', 
+        name = 'House39',
+        houseid = 'house39',
+        houseprompt = 'houseprompt39',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(2824.4970703125,270.89910888672,47.120807647705),
         showblip = true
     },
     {    -- house40
-        name = 'House40', 
+        name = 'House40',
+        houseid = 'house40',
+        houseprompt = 'houseprompt40',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(1387.3020019531,-2077.4401855469,51.581089019775),
         showblip = true
     },
     {    -- house41
-        name = 'House41', 
+        name = 'House41',
+        houseid = 'house41',
+        houseprompt = 'houseprompt41',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(1385.0637207031,-2085.1806640625,51.583812713623),
         showblip = true
     },
     {    -- house42
-        name = 'House42', 
+        name = 'House42',
+        houseid = 'house42',
+        houseprompt = 'houseprompt42',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(1697.4683837891,1508.2376708984,146.8824005127),
         showblip = true
     },
     {    -- house43
-        name = 'House43', 
+        name = 'House43',
+        houseid = 'house43',
+        houseprompt = 'houseprompt43',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(-3400.0258789063,-3302.1235351563,-5.3948922157288),
         showblip = true
     },
     {    -- house44
-        name = 'House44', 
+        name = 'House44',
+        houseid = 'house44',
+        houseprompt = 'houseprompt44',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(-818.61383056641,351.16165161133,97.108840942383),
         showblip = true
     },
     {    -- house45
-        name = 'House45', 
+        name = 'House45',
+        houseid = 'house45',
+        houseprompt = 'houseprompt45',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(2711.4370117188,-1293.0838623047,59.458484649658),
         showblip = true
     },
     {    -- house46
-        name = 'House46', 
+        name = 'House46',
+        houseid = 'house46',
+        houseprompt = 'houseprompt46',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(2627.7453613281,-1221.8547363281,52.398143768311),
         showblip = true
     },
     {    -- house47
-        name = 'House47', 
+        name = 'House47',
+        houseid = 'house47',
+        houseprompt = 'houseprompt47',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(2793.1120605469,-1173.7476806641,46.923934936523),
         showblip = true
     },
     {    -- house48
-        name = 'House48', 
+        name = 'House48',
+        houseid = 'house48',
+        houseprompt = 'houseprompt48',
+        menucoords = vector3(0, 0, 0),
         blipcoords = vector3(2595.1848144531,-1007.4868774414,43.255561828613),
         showblip = true
     },
 }
 
+-- door config
 Config.HouseDoors = {
     ---------------------------------------------------------------------------
     {

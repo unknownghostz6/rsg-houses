@@ -213,6 +213,67 @@ end)
 
 --------------------------------------------------------------------------------------------------
 
+-- house menu prompt
+Citizen.CreateThread(function()
+    for _, v in pairs(Config.Houses) do
+        exports['rsg-core']:createPrompt(v.houseprompt, v.menucoords, RSGCore.Shared.Keybinds['J'], 'Open House Menu', {
+            type = 'client',
+            event = 'rsg-houses:client:housemenu',
+            args = { v.houseid },
+        })
+    end
+end)
+
+-- house menu
+RegisterNetEvent('rsg-houses:client:housemenu', function(houseid)
+    RSGCore.Functions.TriggerCallback('rsg-houses:server:GetHouseKeys', function(results)
+        for _, v in pairs(results) do
+            local playercitizenid = RSGCore.Functions.GetPlayerData().citizenid
+            local resultcitizenid = v.citizenid
+            local resulthouseid = v.houseid
+            if resultcitizenid == playercitizenid and resulthouseid == houseid then
+                exports['rsg-menu']:openMenu({
+                    {
+                        header = 'House Menu',
+                        isMenuHeader = true,
+                        icon = "fas fa-home",
+                    },
+                    {
+                        header = 'Open Storage',
+                        txt = '',
+                        icon = 'fas fa-box',
+                        params = {
+                            event = 'rsg-houses:client:storage',
+                            isServer = false,
+                            args = { house = houseid },
+                        }
+                    },
+                    {
+                        header = 'Close Menu',
+                        txt = '',
+                        params = {
+                            event = 'rsg-menu:closeMenu',
+                        }
+                    },
+                })
+            else
+                print('no access')
+            end
+        end
+    end)
+end)
+
+-- house storage
+RegisterNetEvent('rsg-houses:client:storage', function(data)
+    TriggerServerEvent("inventory:server:OpenInventory", "stash", data.house, {
+        maxweight = Config.StorageMaxWeight,
+        slots = Config.StorageMaxSlots,
+    })
+    TriggerEvent("inventory:client:SetCurrentStash", data.house)
+end)
+
+--------------------------------------------------------------------------------------------------
+
 --[[
     0 = DOORSTATE_UNLOCKED,
     1 = DOORSTATE_LOCKED_UNBREAKABLE,
