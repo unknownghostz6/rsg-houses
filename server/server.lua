@@ -41,6 +41,9 @@ end)
 RegisterServerEvent('rsg-houses:server:buyhouse', function(data)
     local src = source
     local Player = RSGCore.Functions.GetPlayer(src)
+    local firstname = Player.PlayerData.charinfo.firstname
+    local lastname = Player.PlayerData.charinfo.lastname
+    local fullname = (firstname..' '..lastname)
     local housecount = MySQL.prepare.await('SELECT COUNT(*) FROM player_houses WHERE citizenid = ?', {Player.PlayerData.citizenid})
     if housecount >= 1 then
         TriggerClientEvent('RSGCore:Notify', src, 'You already have a house!', 'error')
@@ -50,7 +53,7 @@ RegisterServerEvent('rsg-houses:server:buyhouse', function(data)
         TriggerClientEvent('RSGCore:Notify', src, 'You don\'t have enough cash!', 'error')
         return
     end
-    MySQL.update('UPDATE player_houses SET citizenid = ?, owned = ? WHERE houseid = ?', { Player.PlayerData.citizenid, 1, data.house })
+    MySQL.update('UPDATE player_houses SET citizenid = ?, fullname = ?, owned = ?, credit = ? WHERE houseid = ?', { Player.PlayerData.citizenid, fullname, 1, Config.StartCredit, data.house })
     MySQL.insert('INSERT INTO player_housekeys(citizenid, houseid) VALUES(@citizenid, @houseid)', {
         ['@citizenid'] = Player.PlayerData.citizenid,
         ['@houseid'] = data.house
@@ -63,7 +66,7 @@ end)
 RegisterServerEvent('rsg-houses:server:sellhouse', function(data)
     local src = source
     local Player = RSGCore.Functions.GetPlayer(src)
-    MySQL.update('UPDATE player_houses SET citizenid = ?, owned = ? WHERE houseid = ?', { 0, 0, data.house })
+    MySQL.update('UPDATE player_houses SET citizenid = ?, fullname = ?, owned = ? WHERE houseid = ?', { 0, 0, 0, data.house })
     MySQL.update('DELETE FROM player_housekeys WHERE houseid = ?', { data.house })
     Player.Functions.AddMoney('cash', data.price)
     TriggerClientEvent('RSGCore:Notify', src, 'house sold and keys removed', 'success')
@@ -79,3 +82,55 @@ RegisterNetEvent('rsg-houses:server:addcredit', function(newcredit, removemoney,
     Wait(5000)
     RSGCore.Functions.Notify(src,  'your land tax credit is now $'..newcredit, 'primary')
 end)
+
+--------------------------------------------------------------------------------------------------
+
+-- land tax billing loop
+function BillingInterval()
+    local result = MySQL.query.await('SELECT * FROM player_houses WHERE owned=@owned', { ['@owned'] = 1 } )
+    if result then
+        for i = 1, #result do
+            local row = result[i]
+            if Config.Debug == true then
+                print(row.agent, row.houseid, row.citizenid, row.fullname, row.owned, row.price, row.credit)
+            end
+            if row.credit >= Config.LandTaxPerCycle then
+                local creditadjust = (row.credit - Config.LandTaxPerCycle)
+                MySQL.update('UPDATE player_houses SET credit = ? WHERE houseid = ? AND citizenid = ?', { creditadjust, row.houseid, row.citizenid })
+                local creditwarning = (Config.LandTaxPerCycle * Config.CreditWarning)
+                if row.credit < creditwarning then
+                    MySQL.insert('INSERT INTO telegrams (citizenid, recipient, sender, sendername, subject, sentDate, message) VALUES (?, ?, ?, ?, ?, ?, ?)', {
+                        row.citizenid,
+                        row.fullname,
+                        'NO-REPLY',
+                        'Land Tax Office',
+                        'Land Tax Credit Due to Run Out!',
+                        os.date("%x"),
+                        'Your land tax credit for your house is due to run out!',
+                    })
+                end
+            else
+                MySQL.insert('INSERT INTO telegrams (citizenid, recipient, sender, sendername, subject, sentDate, message) VALUES (?, ?, ?, ?, ?, ?, ?)', {
+                    row.citizenid,
+                    row.fullname,
+                    'NO-REPLY',
+                    'Land Tax Office',
+                    'Land Tax Credit Ran Out!',
+                    os.date("%x"),
+                    'Due to lack of tax credit, your house has been repossessed!',
+                })
+                Wait(1000)
+                MySQL.update('UPDATE player_houses SET citizenid = ?, fullname = ?, owned = ? WHERE houseid = ?', { 0, 0, 0, row.houseid })
+                MySQL.update('DELETE FROM player_housekeys WHERE houseid = ?', { row.houseid })
+                TriggerEvent('rsg-log:server:CreateLog', 'estateagent', 'House Lost', 'red', row.fullname..' house '..row.houseid..' has been lost!')
+            end
+        end
+    end
+    SetTimeout(Config.BillingCycle * (60 * 60 * 1000), BillingInterval) -- hours
+    -- SetTimeout(Config.BillingCycle * (60 * 1000), BillingInterval) -- mins (for testing)
+end
+
+SetTimeout(Config.BillingCycle * (60 * 60 * 1000), BillingInterval) -- hours
+-- SetTimeout(Config.BillingCycle * (60 * 1000), BillingInterval) -- mins (for testing)
+
+--------------------------------------------------------------------------------------------------

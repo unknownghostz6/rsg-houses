@@ -3,7 +3,10 @@ Config = {}
 Config.Debug = true
 
 -- settings
-Config.LandTax = 50
+Config.BillingCycle = 1 -- will remove credit every x hour/s
+Config.LandTaxPerCycle = 1 -- $ amount of tax added per cycle
+Config.StartCredit = 10
+Config.CreditWarning = 5 -- 5 x Config.LandTaxPerCycle amount : warning will trigger when < : example 5 x 1 = 5 so telegram will trigger on 4 hours
 Config.SellBack = 0.8 -- example: 0.5 = 50% of the buy price / 0.8 = 80% of the buy price
 Config.StorageMaxWeight = 4000000
 Config.StorageMaxSlots = 50
