@@ -8,7 +8,7 @@ Config.SellBack = 0.8 -- example: 0.5 = 50% of the buy price / 0.8 = 80% of the 
 
 Config.Blip = {
     blipName = 'Estate Agent', -- Config.Blip.blipName
-    blipSprite = 'blip_proc_home', -- Config.Blip.blipSprite
+    blipSprite = 'blip_robbery_home', -- Config.Blip.blipSprite
     blipScale = 0.2 -- Config.Blip.blipScale
 }
 
@@ -18,7 +18,35 @@ Config.EstateAgents = {
         name = 'Estate Agent', 
         prompt = 'valestateagent',
         coords = vector3(-250.8893, 743.20239, 118.08129),
-        location = 'valentine',
+        location = 'newhanover', -- state
+        showblip = true
+    },
+    {    --blackwater
+        name = 'Estate Agent', 
+        prompt = 'blkestateagent',
+        coords = vector3(-792.3216, -1203.232, 43.645206),
+        location = 'westelizabeth', -- state
+        showblip = true
+    },
+    {    --armadillo
+        name = 'Estate Agent', 
+        prompt = 'armestateagent',
+        coords = vector3(-3658.934, -2620.835, -13.3414),
+        location = 'newaustin', -- state
+        showblip = true
+    },
+    {    --hagen
+        name = 'Estate Agent', 
+        prompt = 'hagestateagent',
+        coords = vector3(-1347.746, 2405.7084, 307.06127),
+        location = 'ambarino', -- state
+        showblip = true
+    },
+    {    --saint denis
+        name = 'Estate Agent', 
+        prompt = 'stdenisestateagent',
+        coords = vector3(2596.5463, -1299.845, 52.817153),
+        location = 'lemoyne', -- state
         showblip = true
     },
 }
