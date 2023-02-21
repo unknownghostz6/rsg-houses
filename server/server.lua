@@ -139,9 +139,10 @@ SetTimeout(Config.BillingCycle * (60 * 60 * 1000), BillingInterval) -- hours
 RegisterNetEvent('rsg-houses:server:addguest', function(cid, houseid)
     local src = source
     local Player = RSGCore.Functions.GetPlayer(src)
-    MySQL.insert('INSERT INTO player_housekeys(citizenid, houseid) VALUES(@citizenid, @houseid)', {
+    MySQL.insert('INSERT INTO player_housekeys(citizenid, houseid, guest) VALUES(@citizenid, @houseid, @guest)', {
         ['@citizenid'] = cid,
-        ['@houseid'] = houseid
+        ['@houseid'] = houseid,
+        ['@guest'] = 1,
     })
     RSGCore.Functions.Notify(src,  'house guest '..cid..' added', 'success')
 end)

@@ -61,5 +61,6 @@ CREATE TABLE IF NOT EXISTS `player_housekeys` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `houseid` varchar(7) NOT NULL DEFAULT '0',
   `citizenid` varchar(50) NOT NULL DEFAULT '0',
+  `guest` int(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
