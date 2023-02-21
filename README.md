@@ -6,6 +6,7 @@
 - rsg-core
 - rsg-menu
 - rsg-input
+- rsg-npcs
 
 # Installation
 - ensure that the dependancies are added and started

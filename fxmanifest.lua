@@ -23,7 +23,8 @@ shared_scripts {
 dependencies {
     'rsg-core',
     'rsg-menu',
-    'rsg-input'
+    'rsg-input',
+    'rsg-npcs'
 }
 
 lua54 'yes'
