@@ -13,6 +13,18 @@ RSGCore.Functions.CreateCallback('rsg-houses:server:GetHouseKeys', function(sour
     end
 end)
 
+-- get house keys (guests)
+RSGCore.Functions.CreateCallback('rsg-houses:server:GetGuestHouseKeys', function(source, cb)
+    local src = source
+    local Player = RSGCore.Functions.GetPlayer(src)
+    local guestinfo = MySQL.query.await('SELECT * FROM player_housekeys WHERE guest=@guest', {['@guest'] = 1})
+    if guestinfo[1] ~= nil then
+        cb(guestinfo)
+    else
+        return
+    end
+end)
+
 -- get house info
 RSGCore.Functions.CreateCallback('rsg-houses:server:GetHouseInfo', function(source, cb)
     local src = source
@@ -150,6 +162,14 @@ RegisterNetEvent('rsg-houses:server:addguest', function(cid, houseid)
         ['@guest'] = 1,
     })
     RSGCore.Functions.Notify(src,  'house guest '..cid..' added', 'success')
+end)
+
+-- remove house guest
+RegisterNetEvent('rsg-houses:server:removeguest', function(data)
+    local src = source
+    local Player = RSGCore.Functions.GetPlayer(src)
+    MySQL.update('DELETE FROM player_housekeys WHERE houseid = ? AND citizenid = ?', { data.houseid, data.guestcid })
+    RSGCore.Functions.Notify(src,  'house guest '..data.guestcid..' removed', 'success')
 end)
 
 --------------------------------------------------------------------------------------------------

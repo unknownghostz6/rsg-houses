@@ -1,6 +1,6 @@
 Config = {}
 
-Config.Debug = true
+Config.Debug = false
 
 -- settings
 Config.BillingCycle = 1 -- will remove credit every x hour/s

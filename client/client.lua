@@ -229,12 +229,10 @@ RegisterNetEvent('rsg-houses:client:housemenu', function(houseid)
     RSGCore.Functions.TriggerCallback('rsg-houses:server:GetHouseKeys', function(results)
         for _, v in pairs(results) do
             local playercitizenid = RSGCore.Functions.GetPlayerData().citizenid
-            local resultcitizenid = v.citizenid
-            local resulthouseid = v.houseid
-            if resultcitizenid == playercitizenid and resulthouseid == houseid then
+            if v.citizenid == playercitizenid and v.houseid == houseid and v.guest == 0 then
                 exports['rsg-menu']:openMenu({
                     {
-                        header = 'House Menu',
+                        header = 'Owner House Menu',
                         isMenuHeader = true,
                         icon = "fas fa-home",
                     },
@@ -281,14 +279,48 @@ RegisterNetEvent('rsg-houses:client:housemenu', function(houseid)
                     {
                         header = 'Close Menu',
                         txt = '',
-						icon = "fas fa-times",
+                        icon = "fas fa-times",
                         params = {
                             event = 'rsg-menu:closeMenu',
                         }
                     },
                 })
-            else
-                RSGCore.Functions.Notify('You don\'t have access!', 'error')
+            elseif v.citizenid == playercitizenid and v.houseid == houseid and v.guest == 1 then
+                exports['rsg-menu']:openMenu({
+                    {
+                        header = 'Guest House Menu',
+                        isMenuHeader = true,
+                        icon = "fas fa-home",
+                    },
+                    {
+                        header = 'Open Storage',
+                        txt = '',
+                        icon = 'fas fa-box',
+                        params = {
+                            event = 'rsg-houses:client:storage',
+                            isServer = false,
+                            args = { house = houseid },
+                        }
+                    },
+                    {
+                        header = 'Outfits',
+                        txt = '',
+                        icon = 'fas fa-hat-cowboy-side',
+                        params = {
+                            event = 'rsg-clothes:OpenOutfits',
+                            isServer = false,
+                            args = {},
+                        }
+                    },
+                    {
+                        header = 'Close Menu',
+                        txt = '',
+                        icon = "fas fa-times",
+                        params = {
+                            event = 'rsg-menu:closeMenu',
+                        }
+                    },
+                })
             end
         end
     end)
@@ -329,7 +361,7 @@ RegisterNetEvent('rsg-houses:client:creditmenu', function(data)
                 {
                     header = 'Close Menu',
                     txt = '',
-					icon = "fas fa-times",
+                    icon = "fas fa-times",
                     params = {
                         event = 'rsg-menu:closeMenu',
                     }
@@ -412,7 +444,7 @@ RegisterNetEvent('rsg-houses:client:guestmenu', function(data)
                 {
                     header = 'Close Menu',
                     txt = '',
-					icon = "fas fa-times",
+                    icon = "fas fa-times",
                     params = {
                         event = 'rsg-menu:closeMenu',
                     }
@@ -445,6 +477,44 @@ RegisterNetEvent('rsg-houses:client:addguest', function(data)
             TriggerServerEvent('rsg-houses:server:addguest', string.upper(dialog.addguest), data.houseid)
         end
     end
+end)
+
+-- remove house guest
+RegisterNetEvent('rsg-houses:client:removeguest', function(data)
+    local GuestMenu = {
+        {
+            header = 'Remove Guest',
+            isMenuHeader = true,
+            icon = "fa-solid fa-circle-info",
+        },
+    }
+    RSGCore.Functions.TriggerCallback('rsg-houses:server:GetGuestHouseKeys', function(cb)
+        for _, v in pairs(cb) do
+            if v.houseid == data.houseid then
+                GuestMenu[#GuestMenu + 1] = {
+                    header = v.citizenid,
+                    txt = '',
+                    icon = "fa-solid fa-circle-user",
+                    params = {
+                        event = "rsg-houses:server:removeguest",
+                        isServer = true,
+                        args = {
+                            guestcid = v.citizenid,
+                            houseid = v.houseid
+                        }
+                    }
+                }
+            end
+        end
+        GuestMenu[#GuestMenu + 1] = {
+            header = 'Close',
+            icon = "fas fa-times",
+            params = {
+                event = "rsg-menu:closeMenu",
+            }
+        }
+        exports['rsg-menu']:openMenu(GuestMenu)
+    end)
 end)
 
 --------------------------------------------------------------------------------------------------
