@@ -139,6 +139,11 @@ SetTimeout(Config.BillingCycle * (60 * 60 * 1000), BillingInterval) -- hours
 RegisterNetEvent('rsg-houses:server:addguest', function(cid, houseid)
     local src = source
     local Player = RSGCore.Functions.GetPlayer(src)
+    local keycount = MySQL.prepare.await('SELECT COUNT(*) FROM player_housekeys WHERE citizenid = ? AND houseid = ?', {cid, houseid})
+    if keycount >= 1 then
+        TriggerClientEvent('RSGCore:Notify', src, 'player already has a key!', 'error')
+        return
+    end
     MySQL.insert('INSERT INTO player_housekeys(citizenid, houseid, guest) VALUES(@citizenid, @houseid, @guest)', {
         ['@citizenid'] = cid,
         ['@houseid'] = houseid,
