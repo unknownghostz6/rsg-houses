@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS `player_houses` (
   `agent` varchar(30) NOT NULL,
   `houseid` varchar(7) NOT NULL DEFAULT '0',
   `citizenid` varchar(50) NOT NULL DEFAULT '0',
-  `fullname` varchar(255) NOT NULL,
+  `fullname` varchar(255) NOT NULL DEFAULT '0',
   `owned` tinyint(4) NOT NULL DEFAULT 0,
   `price` int(11) NOT NULL DEFAULT 0,
   `credit` int(11) NOT NULL DEFAULT 0,
