@@ -269,8 +269,19 @@ RegisterNetEvent('rsg-houses:client:housemenu', function(houseid)
                         }
                     },
                     {
+                        header = 'House Guests',
+                        txt = '',
+                        icon = 'fa-solid fa-circle-user',
+                        params = {
+                            event = 'rsg-houses:client:guestmenu',
+                            isServer = false,
+                            args = { house = houseid },
+                        }
+                    },
+                    {
                         header = 'Close Menu',
                         txt = '',
+						icon = "fas fa-times",
                         params = {
                             event = 'rsg-menu:closeMenu',
                         }
@@ -318,6 +329,7 @@ RegisterNetEvent('rsg-houses:client:creditmenu', function(data)
                 {
                     header = 'Close Menu',
                     txt = '',
+					icon = "fas fa-times",
                     params = {
                         event = 'rsg-menu:closeMenu',
                     }
@@ -350,6 +362,87 @@ RegisterNetEvent('rsg-houses:client:addcredit', function(data)
             end
             local newcredit = (data.credit + dialog.addcredit)
             TriggerServerEvent('rsg-houses:server:addcredit', newcredit, dialog.addcredit, data.houseid)
+        end
+    end
+end)
+
+--------------------------------------------------------------------------------------------------
+
+-- guest menu
+RegisterNetEvent('rsg-houses:client:guestmenu', function(data)
+    RSGCore.Functions.TriggerCallback('rsg-houses:server:GetOwnedHouseInfo', function(result)
+        local housecitizenid = result[1].citizenid
+        local playercitizenid = RSGCore.Functions.GetPlayerData().citizenid
+        if housecitizenid ~= playercitizenid then
+            RSGCore.Functions.Notify('You don\'t own this house!', 'error')
+            return
+        end
+        if housecitizenid == playercitizenid then
+            exports['rsg-menu']:openMenu({
+                {
+                    header = 'House Guests',
+                    isMenuHeader = true,
+                    txt = '',
+                    icon = "fas fa-home",
+                },
+                {
+                    header = 'Add Guest',
+                    txt = '',
+                    icon = 'fa-solid fa-circle-user',
+                    params = {
+                        event = 'rsg-houses:client:addguest',
+                        isServer = false,
+                        args = { 
+                            houseid = result[1].houseid,
+                        },
+                    }
+                },
+                {
+                    header = 'Remove Guest',
+                    txt = '',
+                    icon = 'fa-solid fa-circle-user',
+                    params = {
+                        event = 'rsg-houses:client:removeguest',
+                        isServer = false,
+                        args = { 
+                            houseid = result[1].houseid,
+                        },
+                    }
+                },
+                {
+                    header = 'Close Menu',
+                    txt = '',
+					icon = "fas fa-times",
+                    params = {
+                        event = 'rsg-menu:closeMenu',
+                    }
+                },
+            })
+        end
+    end)
+end)
+
+-- add house guest
+RegisterNetEvent('rsg-houses:client:addguest', function(data)
+    local dialog = exports['rsg-input']:ShowInput({
+        header = 'Add House Guest',
+        submitText = "Add",
+        inputs = {
+            {
+                text = 'Citizen ID',
+                name = "addguest",
+                type = "text",
+                isRequired = true,
+            },
+        }
+    })
+    if dialog ~= nil then
+        for k,v in pairs(dialog) do
+            if Config.Debug == true then
+                print(dialog.addguest)
+                print(data.houseid)
+            end
+            TriggerServerEvent('rsg-houses:server:addguest', string.upper(dialog.addguest), data.houseid)
         end
     end
 end)
