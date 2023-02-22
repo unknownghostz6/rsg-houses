@@ -7,13 +7,16 @@
 - rsg-menu
 - rsg-input
 - rsg-npcs
+- rsg-management
 
 # Installation
 - ensure that the dependancies are added and started
 - add rsg-houses to your resources folder
 - add the sql file "houses.sql" to your database
 
-# Add the following to your rsg-npcs script
+# NPC Setup
+- add the following to your rsg-npcs script
+
 ```lua
     {    -- estate agent New Hanover
         model = `A_M_O_SDUpperClass_01`,
@@ -34,6 +37,67 @@
     {    -- estate agent Lemoyne
         model = `A_M_O_SDUpperClass_01`,
         coords = vector4(2596.5463, -1299.845, 52.817153, 304.04638),
+    },
+```
+
+# Jobs Setup
+- ensure the following Jobs have been setup rsg-core/shared/jobs.lua
+
+```lua
+    ['govenor1'] = {
+        label = 'Govenor New Hanover',
+        defaultDuty = true,
+        offDutyPay = false,
+        grades = {
+            ['0'] = {
+                name = 'Govenor',
+                payment = 100
+            },
+        },
+    },
+    ['govenor2'] = {
+        label = 'Govenor West Elizabeth',
+        defaultDuty = true,
+        offDutyPay = false,
+        grades = {
+            ['0'] = {
+                name = 'Govenor',
+                payment = 100
+            },
+        },
+    },
+    ['govenor3'] = {
+        label = 'Govenor New Austin',
+        defaultDuty = true,
+        offDutyPay = false,
+        grades = {
+            ['0'] = {
+                name = 'Govenor',
+                payment = 100
+            },
+        },
+    },
+    ['govenor4'] = {
+        label = 'Govenor Ambarino',
+        defaultDuty = true,
+        offDutyPay = false,
+        grades = {
+            ['0'] = {
+                name = 'Govenor',
+                payment = 100
+            },
+        },
+    },
+    ['govenor5'] = {
+        label = 'Govenor Lemoyne',
+        defaultDuty = true,
+        offDutyPay = false,
+        grades = {
+            ['0'] = {
+                name = 'Govenor',
+                payment = 100
+            },
+        },
     },
 ```
 

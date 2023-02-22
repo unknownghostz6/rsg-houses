@@ -24,7 +24,8 @@ dependencies {
     'rsg-core',
     'rsg-menu',
     'rsg-input',
-    'rsg-npcs'
+    'rsg-npcs',
+    'rsg-management'
 }
 
 lua54 'yes'
