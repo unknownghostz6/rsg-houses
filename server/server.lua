@@ -136,8 +136,24 @@ function BillingInterval()
                 MySQL.update('DELETE FROM player_housekeys WHERE houseid = ?', { row.houseid })
                 TriggerEvent('rsg-log:server:CreateLog', 'estateagent', 'House Lost', 'red', row.fullname..' house '..row.houseid..' has been lost!')
             end
+            if row.agent == 'newhanover' then
+                exports['rsg-management']:AddMoney('govenor1', Config.LandTaxPerCycle)
+            end
+            if row.agent == 'westelizabeth' then
+                exports['rsg-management']:AddMoney('govenor2', Config.LandTaxPerCycle)
+            end
+            if row.agent == 'newaustin' then
+                exports['rsg-management']:AddMoney('govenor3', Config.LandTaxPerCycle)
+            end
+            if row.agent == 'ambarino' then
+                exports['rsg-management']:AddMoney('govenor4', Config.LandTaxPerCycle)
+            end
+            if row.agent == 'lemoyne' then
+                exports['rsg-management']:AddMoney('govenor5', Config.LandTaxPerCycle)
+            end
         end
     end
+    print('Land Tax Billing Cycle Complete')
     SetTimeout(Config.BillingCycle * (60 * 60 * 1000), BillingInterval) -- hours
     -- SetTimeout(Config.BillingCycle * (60 * 1000), BillingInterval) -- mins (for testing)
 end
