@@ -97,6 +97,37 @@ end)
 
 --------------------------------------------------------------------------------------------------
 
+-- get all door states
+RSGCore.Functions.CreateCallback('rsg-houses:server:GetDoorState', function(source, cb)
+    local src = source
+    local Player = RSGCore.Functions.GetPlayer(src)
+    local doorstate = MySQL.query.await('SELECT * FROM doors', {})
+    if doorstate[1] ~= nil then
+        cb(doorstate)
+    else
+        return
+    end
+end)
+
+-- get current door state
+RSGCore.Functions.CreateCallback('rsg-houses:server:GetCurrentDoorState', function(source, cb, door)
+    local src = source
+    local Player = RSGCore.Functions.GetPlayer(src)
+    local result = MySQL.query.await('SELECT doorstate FROM doors WHERE doorid = ?', { door })
+    if result[1] ~= nil then
+        cb(result[1].doorstate)
+    else
+        return
+    end
+end)
+
+-- update door state
+RegisterNetEvent('rsg-houses:server:UpdateDoorState', function(doorid, doorstate)
+    MySQL.update('UPDATE doors SET doorstate = ? WHERE doorid = ?', { doorstate, doorid })
+end)
+
+--------------------------------------------------------------------------------------------------
+
 -- land tax billing loop
 function BillingInterval()
     local result = MySQL.query.await('SELECT * FROM player_houses WHERE owned=@owned', { ['@owned'] = 1 } )

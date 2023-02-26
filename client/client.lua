@@ -140,13 +140,14 @@ end)
 
 --------------------------------------------------------------------------------------------------
 
--- lock doors and set newtworked
+-- get door state from database and set
 Citizen.CreateThread(function()
-    for k,v in pairs(Config.HouseDoors) do
-        Citizen.InvokeNative(0xD99229FE93B46286, v.doorid, 1,1,0,0,0,0) -- AddDoorToSystemNew
-        Citizen.InvokeNative(0x51D99497ABF3F451, v.doorid) -- SetDoorNetworked
-        DoorSystemSetDoorState(v.doorid, 1)
-    end
+    RSGCore.Functions.TriggerCallback('rsg-houses:server:GetDoorState', function(results)
+        for _,v in pairs(results) do
+            Citizen.InvokeNative(0xD99229FE93B46286, tonumber(v.doorid),1,1,0,0,0,0) -- AddDoorToSystemNew
+            Citizen.InvokeNative(0x6BAB9442830C7F53, tonumber(v.doorid), v.doorstate) -- DoorSystemSetDoorState
+        end
+    end)
 end)
 
 -- house door prompts
@@ -195,17 +196,23 @@ RegisterNetEvent('rsg-houses:client:toggledoor', function(door, house)
             local resultcitizenid = v.citizenid
             local resulthouseid = v.houseid
             if resultcitizenid == playercitizenid and resulthouseid == house then
-                local doorstate = DoorSystemGetDoorState(door)
-                if doorstate == 1 then
-                    unlockAnimation()
-                    DoorSystemSetDoorState(door, 0)
-                    RSGCore.Functions.Notify('unlocked', 'primary')
-                end
-                if doorstate == 0 then
-                    unlockAnimation()
-                    DoorSystemSetDoorState(door, 1)
-                    RSGCore.Functions.Notify('locked', 'primary')
-                end
+                RSGCore.Functions.TriggerCallback('rsg-houses:server:GetCurrentDoorState', function(cb)
+                    local doorstate = cb
+                    if doorstate == 1 then
+                        unlockAnimation()
+                        Citizen.InvokeNative(0xD99229FE93B46286, door,1,1,0,0,0,0) -- AddDoorToSystemNew
+                        Citizen.InvokeNative(0x6BAB9442830C7F53, door, 0) -- DoorSystemSetDoorState
+                        TriggerServerEvent('rsg-houses:server:UpdateDoorState', door, 0)
+                        RSGCore.Functions.Notify('unlocked', 'primary')
+                    end
+                    if doorstate == 0 then
+                        unlockAnimation()
+                        Citizen.InvokeNative(0xD99229FE93B46286, door,1,1,0,0,0,0) -- AddDoorToSystemNew
+                        Citizen.InvokeNative(0x6BAB9442830C7F53, door, 1) -- DoorSystemSetDoorState
+                        TriggerServerEvent('rsg-houses:server:UpdateDoorState', door, 1)
+                        RSGCore.Functions.Notify('locked', 'primary')
+                    end
+                end, door)
             end
         end
     end)
