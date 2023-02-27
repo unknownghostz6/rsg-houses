@@ -642,19 +642,18 @@ RegisterNetEvent('rsg-houses:client:addguest', function(data)
     })
 
     if dialog == nil then return end
+
     local addguest = dialog.addguest
     local houseid = data.houseid
 
-    for _ = 1, #dialog do
-        if Config.Debug then
-            print("")
-            print("House ID: "..houseid)
-            print("Add Guest: "..addguest)
-            print("")
-        end
-
-        TriggerServerEvent('rsg-houses:server:addguest', upr(addguest), houseid)
+    if Config.Debug then
+        print("")
+        print("House ID: "..houseid)
+        print("Add Guest: "..addguest)
+        print("")
     end
+
+    TriggerServerEvent('rsg-houses:server:addguest', upr(addguest), houseid)
 end)
 
 -- Remove House Guest
