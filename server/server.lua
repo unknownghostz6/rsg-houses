@@ -94,7 +94,7 @@ RegisterServerEvent('rsg-houses:server:sellhouse', function(data)
     local src = source
     local Player = RSGCore.Functions.GetPlayer(src)
 
-    MySQL.update('UPDATE player_houses SET citizenid = NULL, fullname = NULL, owned = 0 WHERE houseid = ?', {data.house})
+    MySQL.update('UPDATE player_houses SET citizenid = 0, fullname = 0, owned = 0 WHERE houseid = ?', {data.house})
 
     MySQL.update('DELETE FROM player_housekeys WHERE houseid = ?', {data.house})
 
@@ -219,7 +219,7 @@ BillingInterval = function()
 
             Wait(1000)
 
-            MySQL.update('UPDATE player_houses SET citizenid = NULL, fullname = NULL, owned = 0 WHERE houseid = ?', {row.houseid})
+            MySQL.update('UPDATE player_houses SET citizenid = 0, fullname = 0, owned = 0 WHERE houseid = ?', {row.houseid})
 
             MySQL.update('DELETE FROM player_housekeys WHERE houseid = ?', {row.houseid})
 
