@@ -112,7 +112,7 @@ Config.Houses =
     },
     {    -- house7
         name            = 'House7',
-        houseid         = 'house17',
+        houseid         = 'house7',
         houseprompt     = 'houseprompt7',
         menucoords      = vector3(-2367.865, -2394.804, 62.278335),
         blipcoords      = vector3(-2368.841796875,-2390.40625,61.520217895508),
