@@ -1,6 +1,17 @@
+# Asgard Scripts
+- A slight modification of rsg-houses with the following changes: 
+```
+ - Use third eye to interact with estate agents
+ - add guest to a house with their player/paypal ID instead of citizen ID
+ - Use third eye on the front door to try to use your key, will unlock if you have the key
+ - House names - all houses now have cool and mostly unique house names that make sense with the area they are in, makes the map look better/more immersive especially
+ ```
+ 
+# All credits to RexshackGaming for this script, which belongs to him. Stay up to date with RSG's github for all future updates to his houses script.
+ 
 # RexshackGaming
-- discord : https://discord.gg/s5uSk56B65
-- github : https://github.com/Rexshack-RedM
+- RSG Discord : https://discord.gg/s5uSk56B65
+- RSG Github : https://github.com/Rexshack-RedM
 
 # Dependancies
 - rsg-core
