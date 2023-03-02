@@ -137,51 +137,28 @@ CreateThread(function()
     end
 end)
 
--- Get Specific Door State from Database
-CreateThread(function()
-    local ped = PlayerPedId()
-
-    DoorLockPrompt()
-
-    while true do
-        ped = PlayerPedId()
-        local playerCoords = GetEntityCoords(ped)
-        local t = 1000
-
-        for i = 1, #Config.HouseDoors do
-            local house = Config.HouseDoors[i]
-            local distance = #(playerCoords - house.doorcoords)
-
-            if distance < 2.0 then
-                t = 4
-                HouseID = house.houseid
-                DoorID = house.doorid
-
-                if Config.Debug then
-                    print("")
-                    print("House ID: "..HouseID)
-                    print("Door ID: "..DoorID)
-                    print("")
-                end
-
-                if not checked then
-                    TriggerServerEvent('rsg-houses:server:GetSpecificDoorState', DoorID)
-                    checked = true
-                end
-
-                local label = CreateVarString(10, 'LITERAL_STRING', 'Door Status: '..doorStatus)
-
-                PromptSetActiveGroupThisFrame(doorLockPrompt, label)
-
-                if PromptHasHoldModeCompleted(lockPrompt) then
-                    TriggerEvent("rsg-houses:client:toggledoor", DoorID, HouseID)
-                    t = 1000
-                    checked = false
-                end
-            end
-        end
-
-        Wait(t)
+Citizen.CreateThread(function()
+    for houses, v in pairs(Config.HouseDoors) do
+        local doorcoords = v.doorcoords
+        exports['rsg-target']:AddBoxZone(v.doorid, doorcoords, 1, 1, {
+            name = "housing",
+            heading = 0,
+            debugPoly = false,
+            minZ = -400,
+            maxZ = 400,
+        }, {
+            options = {
+        {
+            type = "client",
+            action = function(entity) 
+                    TriggerEvent('rsg-houses:client:toggledoor', v.doorid, v.houseid)
+                  end,
+            icon = "fas fa-key",
+            label = "TRY KEY",
+        },
+    },
+    distance = 2.5
+})
     end
 end)
 
@@ -278,7 +255,7 @@ RegisterNetEvent('rsg-houses:client:buymenu', function(data)
             if agent == data.agentlocation and owned == 0 then
                 GetHouseInfo[#GetHouseInfo + 1] =
                 {
-                    header = houseid,
+                    header = housename,
                     txt = 'Price $'..house.price..' : Land Tax $'..Config.LandTaxPerCycle,
                     icon = "fas fa-home",
                     params =
@@ -740,10 +717,6 @@ AddEventHandler('onResourceStop', function(resource)
     for i = 1, #createdEntries do
         if createdEntries[i].type == "BLIP" then
             RemoveBlip(createdEntries[i].handle)
-        end
-
-        if createdEntries[i].type == "PROMPT" then
-            exports['rsg-core']:deletePrompt(createdEntries[i].handle)
         end
 
         if createdEntries[i].type == "nPROMPT" then
