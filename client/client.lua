@@ -255,7 +255,7 @@ RegisterNetEvent('rsg-houses:client:buymenu', function(data)
             if agent == data.agentlocation and owned == 0 then
                 GetHouseInfo[#GetHouseInfo + 1] =
                 {
-                    header = housename,
+                    header = houseid,
                     txt = 'Price $'..house.price..' : Land Tax $'..Config.LandTaxPerCycle,
                     icon = "fas fa-home",
                     params =

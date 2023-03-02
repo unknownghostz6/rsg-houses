@@ -63,7 +63,7 @@ Config.EstateAgents =
 Config.Houses =
 {
     {    -- house1
-        name            = 'House1',
+        name            = 'Cumberland #1',
         houseid         = 'house1',
         houseprompt     = 'houseprompt1',
         menucoords      = vector3(220.0229, 984.58837, 190.89463),
@@ -71,7 +71,7 @@ Config.Houses =
         showblip        = true
     },
     {    -- house2
-        name            = 'House2',
+        name            = 'Dakota River #2',
         houseid         = 'house2',
         houseprompt     = 'houseprompt2',
         menucoords      = vector3(-608.9351, -33.68871, 85.995544),
@@ -79,340 +79,340 @@ Config.Houses =
         showblip        = true
     },
     {    -- house3
-        name            = 'House3',
+        name            = 'Emerald Ranch #3',
         houseid         = 'house3',
         houseprompt     = 'houseprompt3',
         menucoords      = vector3(1887.1403, 300.56072, 77.066558),
-        blipcoords      = vector3(1888.1700439453,297.95916748047,76.076202392578),
+        blipcoords      = vector3(1888.1700439453, 297.95916748047, 76.076202392578),
         showblip        = true
     },
     {    -- house4
-        name            = 'House4',
+        name            = 'Eris Field #4',
         houseid         = 'house4',
         houseprompt     = 'houseprompt4',
         menucoords      = vector3(1787.467, -81.54805, 56.802436),
-        blipcoords      = vector3(1781.1064453125,-89.115615844727,55.815963745117),
+        blipcoords      = vector3(1781.1064453125, -89.115615844727, 55.815963745117),
         showblip        = true
     },
     {    -- house5
-        name            = 'House5',
+        name            = 'Eris Field #5',
         houseid         = 'house5',
         houseprompt     = 'houseprompt5',
         menucoords      = vector3(1269.6508, -412.1731, 97.596702),
-        blipcoords      = vector3(1264.1951904297,-404.07095336914,96.595031738281),
+        blipcoords      = vector3(1264.1951904297, -404.07095336914, 96.595031738281),
         showblip        = true
     },
     {    -- house6
-        name            = 'House6',
+        name            = 'Eris Field #6',
         houseid         = 'house6',
         houseprompt     = 'houseprompt6',
         menucoords      = vector3(1619.2441, -364.0213, 75.897171),
-        blipcoords      = vector3(1627.2501220703,-366.25610351563,74.909873962402),
+        blipcoords      = vector3(1627.2501220703, -366.25610351563, 74.909873962402),
         showblip        = true
     },
     {    -- house7
-        name            = 'House7',
+        name            = 'MacFarlanes Ranch #7',
         houseid         = 'house7',
         houseprompt     = 'houseprompt7',
         menucoords      = vector3(-2367.865, -2394.804, 62.278335),
-        blipcoords      = vector3(-2368.841796875,-2390.40625,61.520217895508),
+        blipcoords      = vector3(-2368.841796875, -2390.40625, 61.520217895508),
         showblip        = true
     },
     {    -- house8
-        name            = 'House8',
+        name            = 'Emerald Ranch #8',
         houseid         = 'house8',
         houseprompt     = 'houseprompt8',
         menucoords      = vector3(1120.2464, 492.69769, 97.284187),
-        blipcoords      = vector3(1114.0626220703,493.74633789063,96.290939331055),
+        blipcoords      = vector3(1114.0626220703, 493.74633789063, 96.290939331055),
         showblip        = true
     },
     {    -- house9
-        name            = 'House9',
+        name            = 'Flatneck Station #9',
         houseid         = 'house9',
         houseprompt     = 'houseprompt9',
         menucoords      = vector3(-63.72145, -392.5166, 72.218261),
-        blipcoords      = vector3(-64.242599487305,-393.56112670898,71.248695373535),
+        blipcoords      = vector3(-64.242599487305, -393.56112670898, 71.248695373535),
         showblip        = true
     },
     {    -- house10
-        name            = 'House10',
+        name            = 'Edge of Hanover #10',
         houseid         = 'house10',
         houseprompt     = 'houseprompt10',
         menucoords      = vector3(339.88751, -667.7122, 42.811027),
-        blipcoords      = vector3(338.25341796875,-669.94842529297,41.821144104004),
+        blipcoords      = vector3(338.25341796875, -669.94842529297, 41.821144104004),
         showblip        = true
     },
     {    -- house11
-        name            = 'House11',
+        name            = 'Rhodes #11',
         houseid         = 'house11',
         houseprompt     = 'houseprompt11',
         menucoords      = vector3(1111.6049, -1304.963, 66.403602),
-        blipcoords      = vector3(1111.4659423828,-1297.5782470703,65.41828918457),
+        blipcoords      = vector3(1111.4659423828, -1297.5782470703, 65.41828918457),
         showblip        = true
     },
     {    -- house12
-        name            = 'House12',
+        name            = 'Mattock Pond #12',
         houseid         = 'house12',
         houseprompt     = 'houseprompt12',
         menucoords      = vector3(1369.3358, -870.8798, 70.127265),
-        blipcoords      = vector3(1365.4197998047,-872.88018798828,69.162147521973),
+        blipcoords      = vector3(1365.4197998047, -872.88018798828, 69.162147521973),
         showblip        = true
     },
     {    -- house13
-        name            = 'House13',
+        name            = 'Lemoyne Bayou #13',
         houseid         = 'house13',
         houseprompt     = 'houseprompt13',
         menucoords      = vector3(2064.4531, -854.3615, 43.360958),
-        blipcoords      = vector3(2068.3598632813,-847.32141113281,42.350879669189),
+        blipcoords      = vector3(2068.3598632813, -847.32141113281, 42.350879669189),
         showblip        = true
     },
     {    -- house14
-        name            = 'House14',
+        name            = 'Lemoyne Bayou #14',
         houseid         = 'house14',
         houseprompt     = 'houseprompt14',
         menucoords      = vector3(2254.1096, -795.2846, 44.226325),
-        blipcoords      = vector3(2253.8466796875,-797.30505371094,43.133113861084),
+        blipcoords      = vector3(2253.8466796875, -797.30505371094, 43.133113861084),
         showblip        = true
     },
     {    -- house15
-        name            = 'House15',
+        name            = 'Lemoyne Bayou #15',
         houseid         = 'house15',
         houseprompt     = 'houseprompt15',
         menucoords      = vector3(2373.1706, -862.4254, 43.020359),
-        blipcoords      = vector3(2370.9301757813,-857.48553466797,42.043087005615),
+        blipcoords      = vector3(2370.9301757813, -857.48553466797, 42.043087005615),
         showblip        = true
     },
     {    -- house16
-        name            = 'House16',
+        name            = 'Kansas River #16',
         houseid         = 'house16',
         houseprompt     = 'houseprompt16',
         menucoords      = vector3(1706.3145, -1004.643, 43.473499),
-        blipcoords      = vector3(1709.3989257813,-1003.7617797852,42.480758666992),
+        blipcoords      = vector3(1709.3989257813, -1003.7617797852, 42.480758666992),
         showblip        = true
     },
     {    -- house17
-        name            = 'House17',
+        name            = 'Roanoke Ridge #17',
         houseid         = 'house17',
         houseprompt     = 'houseprompt17',
         menucoords      = vector3(2624.0607, 1696.1097, 115.70227),
-        blipcoords      = vector3(2628.2214355469,1694.3289794922,114.66619110107),
+        blipcoords      = vector3(2628.2214355469, 1694.3289794922, 114.66619110107),
         showblip        = true
     },
     {    -- house18
-        name            = 'House18',
+        name            = 'Roanoke Ridge #18',
         houseid         = 'house18',
         houseprompt     = 'houseprompt18',
         menucoords      = vector3(2990.2619, 2184.7788, 166.74037),
-        blipcoords      = vector3(2993.4243164063,2188.4375,165.73570251465),
+        blipcoords      = vector3(2993.4243164063, 2188.4375, 165.73570251465),
         showblip        = true
     },
     {    -- house19
-        name            = 'House19',
+        name            = 'Roanoke Valley #19',
         houseid         = 'house19',
         houseprompt     = 'houseprompt19',
         menucoords      = vector3(2477.8996, 1998.1372, 168.2523),
-        blipcoords      = vector3(2473.8527832031,1996.4063720703,167.22595214844),
+        blipcoords      = vector3(2473.8527832031, 1996.4063720703, 167.22595214844),
         showblip        = true
     },
     {    -- house20
-        name            = 'House20',
+        name            = 'Window Rock #20',
         houseid         = 'house20',
         houseprompt     = 'houseprompt20',
         menucoords      = vector3(-422.9819, 1738.1881, 216.55885),
-        blipcoords      = vector3(-422.6643371582,1733.5697021484,215.59002685547),
+        blipcoords      = vector3(-422.6643371582, 1733.5697021484, 215.59002685547),
         showblip        = true
     },
     {    -- house21
-        name            = 'House21',
+        name            = 'Emerald Ranch #21',
         houseid         = 'house21',
         houseprompt     = 'houseprompt21',
         menucoords      = vector3(897.28363, 261.66098, 116.00907),
-        blipcoords      = vector3(900.34381103516,265.21841430664,115.04807281494),
+        blipcoords      = vector3(900.34381103516, 265.21841430664, 115.04807281494),
         showblip        = true
     },
     {    -- house22
-        name            = 'House22',
+        name            = 'Spider Gorge #22',
         houseid         = 'house22',
         houseprompt     = 'houseprompt22',
         menucoords      = vector3(-1353.182, 2436.3557, 308.40505),
-        blipcoords      = vector3(-1347.9483642578,2435.2036132813,307.49612426758),
+        blipcoords      = vector3(-1347.9483642578, 2435.2036132813, 307.49612426758),
         showblip        = true
     },
     {    -- house23
-        name            = 'House23',
+        name            = 'A Lonely Soul #23',
         houseid         = 'house23',
         houseprompt     = 'houseprompt23',
         menucoords      = vector3(-553.2758, 2701.4128, 320.41564),
-        blipcoords      = vector3(-556.41680908203,2698.8635253906,319.38018798828),
+        blipcoords      = vector3(-556.41680908203, 2698.8635253906, 319.38018798828),
         showblip        = true
     },
     {    -- house24
-        name            = 'House24',
+        name            = 'Barrow Lagoon #24',
         houseid         = 'house24',
         houseprompt     = 'houseprompt24',
         menucoords      = vector3(-1021.677, 1695.299, 244.31025),
-        blipcoords      = vector3(-1019.1105957031,1688.2989501953,243.27978515625),
+        blipcoords      = vector3(-1019.1105957031, 1688.2989501953, 243.27978515625),
         showblip        = true
     },
     {    -- house25
-        name            = 'House25',
+        name            = 'Little Creek River #25',
         houseid         = 'house25',
         houseprompt     = 'houseprompt25',
         menucoords      = vector3(-1819.195, 657.87084, 131.85984),
-        blipcoords      = vector3(-1815.1489257813,654.96380615234,130.88250732422),
+        blipcoords      = vector3(-1815.1489257813, 654.96380615234, 130.88250732422),
         showblip        = true
     },
     {    -- house26
-        name            = 'House26',
+        name            = 'Little Creek River #26',
         houseid         = 'house26',
         houseprompt     = 'houseprompt26',
         menucoords      = vector3(-2173.403, 715.4107, 122.61867),
-        blipcoords      = vector3(-2182.5109863281,716.46356201172,121.62875366211),
+        blipcoords      = vector3(-2182.5109863281, 716.46356201172, 121.62875366211),
         showblip        = true
     },
     {    -- house27
-        name            = 'House27',
+        name            = 'Aurora Basin #27',
         houseid         = 'house27',
         houseprompt     = 'houseprompt27',
         menucoords      = vector3(-2579.494, -1380.417, 149.2548),
-        blipcoords      = vector3(-2575.826171875,-1379.3582763672,148.27227783203),
+        blipcoords      = vector3(-2575.826171875, -1379.3582763672, 148.27227783203),
         showblip        = true
     },
     {    -- house28
-        name            = 'House28',
+        name            = 'Tall Trees #28',
         houseid         = 'house28',
         houseprompt     = 'houseprompt28',
         menucoords      = vector3(-2375.747, -1591.876, 154.28628),
-        blipcoords      = vector3(-2374.3642578125,-1592.6021728516,153.29959106445),
+        blipcoords      = vector3(-2374.3642578125, -1592.6021728516, 153.29959106445),
         showblip        = true
     },
     {    -- house29
-        name            = 'House29',
+        name            = 'Manteca Falls #29',
         houseid         = 'house29',
         houseprompt     = 'houseprompt29',
         menucoords      = vector3(-1410.868, -2671.971, 42.17152),
-        blipcoords      = vector3(-1410.5717773438,-2674.2229003906,41.185203552246),
+        blipcoords      = vector3(-1410.5717773438, -2674.2229003906, 41.185203552246),
         showblip        = true
     },
     {    -- house30
-        name            = 'House30',
+        name            = 'Twin Rocks #30',
         houseid         = 'house30',
         houseprompt     = 'houseprompt30',
         menucoords      = vector3(-3960.028, -2124.254, -4.076438),
-        blipcoords      = vector3(-3958.3901367188,-2129.3940429688,-5.235463142395),
+        blipcoords      = vector3(-3958.3901367188, -2129.3940429688, -5.235463142395),
         showblip        = true
     },
     {    -- house31
-        name            = 'House31',
+        name            = 'Cholla Springs #31',
         houseid         = 'house31',
         houseprompt     = 'houseprompt31',
         menucoords      = vector3(-4370.378, -2415.955, 20.399623),
-        blipcoords      = vector3(-4366.0122070313,-2416.3056640625,19.423376083374),
+        blipcoords      = vector3(-4366.0122070313, -2416.3056640625, 19.423376083374),
         showblip        = true
     },
     {    -- house32
-        name            = 'House32',
+        name            = 'Rathskeller #32',
         houseid         = 'house32',
         houseprompt     = 'houseprompt32',
         menucoords      = vector3(-5549.529, -2399.353, -8.745719),
-        blipcoords      = vector3(-5552.146484375,-2401.5205078125,-9.7140893936157),
+        blipcoords      = vector3(-5552.146484375, -2401.5205078125, -9.7140893936157),
         showblip        = true
     },
     {    -- house33
-        name            = 'House33',
+        name            = 'Armadillo #33',
         houseid         = 'house33',
         houseprompt     = 'houseprompt33',
         menucoords      = vector3(-3550.882, -3008.228, 11.887498),
-        blipcoords      = vector3(-3552.3842773438,-3012.0998535156,10.820337295532),
+        blipcoords      = vector3(-3552.3842773438, -3012.0998535156, 10.820337295532),
         showblip        = true
     },
     {    -- house34
-        name            = 'House34',
+        name            = 'Deadboot Creek #34',
         houseid         = 'house34',
         houseprompt     = 'houseprompt34',
-        menucoords      = vector3(-1962.949, 2157.6286, 327.58007),
-        blipcoords      = vector3(-1959.1854248047,2160.2043457031,326.55380249023),
+        menucoords      = vector3(-1962.949, 2157.6286, 327.58007),        
+        blipcoords      = vector3(-1959.1854248047, 2160.2043457031, 326.55380249023),
         showblip        = true
     },
     {    -- house35
-        name            = 'House35',
+        name            = 'Mount Hagen #35',
         houseid         = 'house35',
         houseprompt     = 'houseprompt35',
         menucoords      = vector3(-1488.904, 1248.895, 314.49044),
-        blipcoords      = vector3(-1494.4030761719,1246.7662353516,313.5432434082),
+        blipcoords      = vector3(-1494.4030761719, 1246.7662353516, 313.5432434082),
         showblip        = true
     },
     {    -- house36
-        name            = 'House36',
+        name            = 'Roanoke Ridge #36',
         houseid         = 'house36',
         houseprompt     = 'houseprompt36',
         menucoords      = vector3(3028.9965, 1780.9338, 84.127723),
-        blipcoords      = vector3(3024.1213378906,1777.0731201172,83.169136047363),
+        blipcoords      = vector3(3024.1213378906, 1777.0731201172, 83.169136047363),
         showblip        = true
     },
     {    -- house37
-        name            = 'House37',
+        name            = 'Three Sisters #37',
         houseid         = 'house37',
         houseprompt     = 'houseprompt37',
         menucoords      = vector3(1984.8593, 1196.9948, 171.40205),
-        blipcoords      = vector3(1981.9653320313,1195.0833740234,170.41778564453),
+        blipcoords      = vector3(1981.9653320313, 1195.0833740234, 170.41778564453),
         showblip        = true
     },
     {    -- house38
-        name            = 'House38',
+        name            = 'Van Horn #38',
         houseid         = 'house38',
         houseprompt     = 'houseprompt38',
         menucoords      = vector3(2718.0898, 710.00518, 79.543266),
-        blipcoords      = vector3(2716.8154296875,708.16693115234,78.605178833008),
+        blipcoords      = vector3(2716.8154296875, 708.16693115234, 78.605178833008),
         showblip        = true
     },
     {    -- house39
-        name            = 'House39',
+        name            = 'Van Horn #39',
         houseid         = 'house39',
         houseprompt     = 'houseprompt39',
         menucoords      = vector3(2823.6367, 275.38955, 48.096889),
-        blipcoords      = vector3(2824.4970703125,270.89910888672,47.120807647705),
+        blipcoords      = vector3(2824.4970703125, 270.89910888672, 47.120807647705),
         showblip        = true
     },
     {    -- house40
-        name            = 'House40',
+        name            = 'Braithwaite Manor #40',
         houseid         = 'house40',
         houseprompt     = 'houseprompt40',
         menucoords      = vector3(1391.1662, -2085.114, 52.56631),
-        blipcoords      = vector3(1387.3020019531,-2077.4401855469,51.581089019775),
+        blipcoords      = vector3(1387.3020019531, -2077.4401855469, 51.581089019775),
         showblip        = true
     },
     -- 41 spare
     {    -- house42
-        name            = 'House42',
+        name            = 'OCreaghs Run #42',
         houseid         = 'house42',
         houseprompt     = 'houseprompt42',
         menucoords      = vector3(1700.9014, 1512.7069, 147.86967),
-        blipcoords      = vector3(1697.4683837891,1508.2376708984,146.8824005127),
+        blipcoords      = vector3(1697.4683837891, 1508.2376708984, 146.8824005127),
         showblip        = true
     },
     {    -- house43
-        name            = 'House43',
+        name            = 'Lake Don Julio #443',
         houseid         = 'house43',
         houseprompt     = 'houseprompt43',
         menucoords      = vector3(-3402.104, -3304.445, -4.457978),
-        blipcoords      = vector3(-3400.0258789063,-3302.1235351563,-5.3948922157288),
+        blipcoords      = vector3(-3400.0258789063, -3302.1235351563, -5.3948922157288),
         showblip        = true
     },
     {    -- house44
-        name            = 'House44',
+        name            = 'Valentine #44',
         houseid         = 'house44',
         houseprompt     = 'houseprompt44',
         menucoords      = vector3(-819.3696, 356.07235, 98.078361),
-        blipcoords      = vector3(-818.61383056641,351.16165161133,97.108840942383),
+        blipcoords      = vector3(-818.61383056641, 351.16165161133, 97.108840942383),
         showblip        = true
     },
     {    -- house45
-        name            = 'House45',
+        name            = 'Saint Denis #45',
         houseid         = 'house45',
         houseprompt     = 'houseprompt45',
         menucoords      = vector3(2712.8942, -1288.714, 60.344982),
-        blipcoords      = vector3(2711.4370117188,-1293.0838623047,59.458484649658),
+        blipcoords      = vector3(2711.4370117188, -1293.0838623047, 59.458484649658),
         showblip        = true
     }
 }
