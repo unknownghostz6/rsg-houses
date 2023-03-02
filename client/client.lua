@@ -67,12 +67,25 @@ CreateThread(function()
     for i = 1, #Config.EstateAgents do
         local agent = Config.EstateAgents[i]
 
-        exports['rsg-core']:createPrompt(agent.prompt, agent.coords, RSGCore.Shared.Keybinds['J'], 'Talk to ' .. agent.name,
+        exports['rsg-target']:AddBoxZone(agent.prompt, agent.coords, 1, 1, {
+            name = "housingAgent",
+            heading = 0,
+            debugPoly = false,
+            minZ = -400,
+            maxZ = 400,
+}, {
+    options = {
         {
-            type = 'client',
-            event = 'rsg-houses:client:agentmenu',
-            args = {agent.location},
-        })
+            type = "client",
+            action = function(entity) 
+                    TriggerEvent('rsg-houses:client:agentmenu', agent.location)
+                  end,
+            icon = "fas fa-house",
+            label = "TALK TO AGENT",
+        },
+    },
+    distance = 2.5
+})
 
         createdEntries[#createdEntries + 1] = {type = "PROMPT", handle = agent.prompt}
 
@@ -625,7 +638,6 @@ end)
 
 -- Add House Guest
 RegisterNetEvent('rsg-houses:client:addguest', function(data)
-    local upr = string.upper
     local dialog = exports['rsg-input']:ShowInput(
     {
         header = 'Add House Guest',
@@ -633,27 +645,24 @@ RegisterNetEvent('rsg-houses:client:addguest', function(data)
         inputs =
         {
             {
-                text = 'Citizen ID',
-                name = "addguest",
-                type = "text",
-                isRequired = true
+                text = 'Player ID',
+                name = "playerid",
+                type = "number",
+                isRequired = true,
             }
         }
     })
 
     if dialog == nil then return end
 
-    local addguest = dialog.addguest
-    local houseid = data.houseid
-
     if Config.Debug then
         print("")
-        print("House ID: "..houseid)
-        print("Add Guest: "..addguest)
+        print("House ID: "..data.houseid)
+        print("Add Guest: "..dialog.playerid)
         print("")
     end
 
-    TriggerServerEvent('rsg-houses:server:addguest', upr(addguest), houseid)
+    TriggerServerEvent('rsg-houses:server:addguest', dialog.playerid, data.houseid)
 end)
 
 -- Remove House Guest
